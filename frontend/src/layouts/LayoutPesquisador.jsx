@@ -15,7 +15,24 @@ export default function LayoutPesquisador({ usuario, setUsuario }) {
       {/* Barra Superior estilo OpenAI */}
       <header className="bg-white shadow-sm border-b px-8 py-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-8">
-          <h1 className="font-bold text-xl text-blue-900 tracking-tight">FCJA Docs</h1>
+          
+          {/* Nova Logo e Títulos */}
+          <div className="flex items-center gap-3">
+            <img 
+              src="/logomarca-transparente-fcja.png" 
+              alt="Logo Fundação Casa de José Américo" 
+              className="h-12 w-auto object-contain" 
+            />
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold text-blue-900 leading-none tracking-tight">
+                FCJA
+              </span>
+              <span className="text-xs text-gray-500 font-semibold tracking-wide uppercase mt-1">
+                Formulário Dados de Pesquisa
+              </span>
+            </div>
+          </div>
+
           <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
             <Link to="/pesquisador" className="hover:text-black transition-colors">Início (Guia)</Link>
             <Link to="/pesquisador/formulario" className="hover:text-black transition-colors">Formulário</Link>
