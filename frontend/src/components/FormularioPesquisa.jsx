@@ -56,6 +56,22 @@ export default function FormularioPesquisa() {
     }
   };
 
+  // Extrai uma lista única de coordenadores a partir dos núcleos baixados
+  const coordenadoresUnicos = [...new Set(nucleos.map((n) => n.coordenador).filter(Boolean))];
+
+  // Atualiza o núcleo e preenche o coordenador automaticamente
+  const handleNucleoChange = (e) => {
+    const idSelecionado = e.target.value;
+    // Busca os dados completos do núcleo selecionado
+    const nucleoCompleto = nucleos.find((n) => n.id.toString() === idSelecionado);
+    
+    setFormData({
+      ...formData,
+      nucleoId: idSelecionado,
+      coordenadorSelecionado: nucleoCompleto ? nucleoCompleto.coordenador : ''
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -91,16 +107,28 @@ export default function FormularioPesquisa() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <label className="block font-semibold mb-2">Nome do núcleo*</label>
-            <select name="nucleoId" onChange={handleChange} className="w-full border p-2 rounded" required>
+            <select 
+              name="nucleoId" 
+              value={formData.nucleoId} 
+              onChange={handleNucleoChange} 
+              required 
+              className="w-full border p-2 rounded outline-none focus:border-blue-500 bg-white"
+            >
               <option value="">Selecione o núcleo</option>
               {nucleos.map(n => <option key={n.id} value={n.id}>{n.nome}</option>)}
             </select>
           </div>
           <div>
             <label className="block font-semibold mb-2">Coordenador(a)*</label>
-            <select name="coordenadorSelecionado" onChange={handleChange} className="w-full border p-2 rounded" required>
+            <select 
+              name="coordenadorSelecionado" 
+              value={formData.coordenadorSelecionado} 
+              onChange={handleChange} 
+              required 
+              className="w-full border p-2 rounded outline-none focus:border-blue-500 bg-gray-50"
+            >
               <option value="">Selecione o coordenador</option>
-              {coordenadores.map((c, i) => <option key={i} value={c}>{c}</option>)}
+              {coordenadoresUnicos.map((c, i) => <option key={i} value={c}>{c}</option>)}
             </select>
           </div>
         </div>
