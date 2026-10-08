@@ -153,9 +153,9 @@ export default function FormularioPesquisa() {
 
       {/* 2. Procedência e Originais */}
       <section className="mb-10 p-6 bg-gray-50 rounded border">
-        <h2 className="text-xl font-bold mb-4 text-blue-800">2. Procedência e Originais</h2>
+        <h2 className="text-xl font-bold mb-4 text-blue-800">2. Procedência e Originais dos documentos produzidos pelo Núcleo</h2>
         
-        <label className="block font-semibold mb-2">Qual a procedência da documentação e/ou dados utilizados?</label>
+        <label className="block font-semibold mb-2">Qual a origem dos documentos ou dados que o grupo utiliza para suas pesquisas?</label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-2">
           {['Doação', 'Aquisição', 'Recolhimento', 'Comodato', 'Transferência', 'Empréstimo', 'Pertencentes a pesquisador', 'Disponíveis na internet', 'Reprodução de outra instituição', 'Outra procedência'].map(opt => (
             <label key={opt} className="text-sm"><input type="checkbox" name="procedencia" value={opt} onChange={handleChange} className="mr-2"/>{opt}</label>
@@ -163,13 +163,13 @@ export default function FormularioPesquisa() {
         </div>
         <textarea name="detalheProcedencia" placeholder="Detalhe um pouco mais sobre a procedência..." onChange={handleChange} className="w-full border p-2 rounded mb-6 mt-2" rows="2"></textarea>
 
-        <label className="block font-semibold mb-2">Sobre a existência dos documentos originais</label>
+        <label className="block font-semibold mb-2">Sobre a existência das fontes originais de apoio a pesquisa.</label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
           {['Estão na FCJA', 'Estão em outra instituição', 'Dispersos em locais diferentes', 'Trabalha só com cópias', 'Sob custódia do núcleo', 'Localização desconhecida', 'Não se aplica'].map(opt => (
             <label key={opt} className="text-sm"><input type="checkbox" name="originais" value={opt} onChange={handleChange} className="mr-2"/>{opt}</label>
           ))}
         </div>
-        <textarea name="especifiqueOriginais" placeholder="Especifique sobre o uso de originais..." onChange={handleChange} className="w-full border p-2 rounded mt-2" rows="2"></textarea>
+        <textarea name="especifiqueOriginais" placeholder="Outra procedência. Especificar abaixo a origem das fontes originais caso não esteja especificado acima." onChange={handleChange} className="w-full border p-2 rounded mt-2" rows="2"></textarea>
       </section>
 
       {/* 3. Gênero e Tipos de Dados */}
@@ -195,7 +195,7 @@ export default function FormularioPesquisa() {
 
       {/* 4. Produção, Formatos e Ética */}
       <section className="mb-10 p-6 bg-gray-50 rounded border">
-        <h2 className="text-xl font-bold mb-4 text-blue-800">4. Dados Produzidos e Ética</h2>
+        <h2 className="text-xl font-bold mb-4 text-blue-800">4. Dados Produzidos pelo Núcleo de Pesquisa</h2>
 
         <label className="block font-semibold mb-2">Documentos/dados produzidos pelo núcleo:</label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
