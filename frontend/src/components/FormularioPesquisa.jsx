@@ -30,23 +30,19 @@ export default function FormularioPesquisa() {
   });
 
   useEffect(() => {
-    fetch('import.meta.env.VITE_API_URL/api/formularios/nucleos')
-      .then(res => {
-        if (!res.ok) throw new Error('Servidor offline ou erro na rota');
-        return res.json();
-      })
-      .then(data => {
-        if (Array.isArray(data)) {
-          setNucleos(data);
-          const coords = [...new Set(data.map(n => n.coordenador).filter(Boolean))];
-          setCoordenadores(coords);
+    const carregarNucleos = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/formularios/nucleos`);
+            if (response.ok) {
+                const data = await response.json();
+                setNucleos(data);
+            }
+        } catch (error) {
+            console.error("Erro ao carregar núcleos:", error);
         }
-      })
-      .catch(err => {
-        console.error('Erro ao conectar com a API:', err);
-        setNucleos([]);
-      });
-  }, []);
+    };
+    carregarNucleos();
+}, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
