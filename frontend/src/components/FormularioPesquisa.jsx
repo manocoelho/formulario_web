@@ -30,7 +30,7 @@ export default function FormularioPesquisa() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/formularios/nucleos')
+    fetch('import.meta.env.VITE_API_URL/api/formularios/nucleos')
       .then(res => {
         if (!res.ok) throw new Error('Servidor offline ou erro na rota');
         return res.json();
@@ -63,7 +63,7 @@ export default function FormularioPesquisa() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/formularios', {
+      const response = await fetch('import.meta.env.VITE_API_URL/api/formularios', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

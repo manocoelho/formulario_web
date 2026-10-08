@@ -7,7 +7,7 @@ export default function GerenciarAcessos() {
 
   const carregarUsuarios = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/usuarios');
+      const res = await fetch('import.meta.env.VITE_API_URL/api/usuarios');
       if (res.ok) {
         const data = await res.json();
         setUsuarios(data);
@@ -30,7 +30,7 @@ export default function GerenciarAcessos() {
     setMensagem({ texto: '', tipo: '' });
     
     try {
-      const response = await fetch('http://localhost:5000/api/usuarios', {
+      const response = await fetch('import.meta.env.VITE_API_URL/api/usuarios', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

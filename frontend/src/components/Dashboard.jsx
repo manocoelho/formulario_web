@@ -9,7 +9,7 @@ export default function Dashboard() {
   const CORES = ['#1e3a8a', '#3b82f6', '#93c5fd', '#bfdbfe', '#f87171'];
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/formularios')
+    fetch('import.meta.env.VITE_API_URL/api/formularios')
       .then(res => res.json())
       .then(data => {
         setDados(data);
