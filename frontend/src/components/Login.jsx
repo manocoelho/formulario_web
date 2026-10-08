@@ -28,7 +28,7 @@ export default function Login({ setUsuario }) {
         <div className="flex h-screen items-center justify-center bg-gray-100">
             <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-96 border-t-4 border-blue-900">
                 <h2 className="text-2xl font-bold mb-6 text-center text-blue-900 tracking-tight">
-                    FCJA Docs
+                    FCJA Formulário
                 </h2>
                 {erro && <p className="text-red-600 mb-4 text-sm text-center font-medium bg-red-50 p-2 rounded">{erro}</p>}
                 
