@@ -1,35 +1,32 @@
 const db = require('../config/db');
 
+// 1. LER: Busca todos os usuários
 exports.getUsuarios = async (req, res) => {
     try {
-        // Retorna todos os usuários (exceto as senhas, por segurança)
-        const result = await db.query('SELECT id, nome, login, perfil FROM usuarios ORDER BY nome ASC');
+        const result = await db.query('SELECT * FROM usuarios ORDER BY id ASC');
         res.json(result.rows);
     } catch (error) {
         console.error('Erro ao buscar usuários:', error);
-        res.status(500).json({ error: 'Erro interno do servidor' });
+        res.status(500).json({ error: 'Erro interno ao buscar usuários' });
     }
 };
 
-exports.criarUsuario = async (req, res) => {
-    const { nome, login, senha, perfil } = req.body;
+// 2. CRIAR: Cadastra um novo usuário (A função que estava a faltar!)
+exports.createUsuario = async (req, res) => {
     try {
-        const result = await db.query(
-            'INSERT INTO usuarios (nome, login, senha, perfil) VALUES ($1, $2, $3, $4) RETURNING id, nome, login, perfil',
-            [nome, login, senha, perfil || 'pesquisador']
+        const { nome, login, senha, perfil } = req.body;
+        await db.query(
+            'INSERT INTO usuarios (nome, login, senha, perfil) VALUES ($1, $2, $3, $4)',
+            [nome, login, senha, perfil]
         );
-        res.status(201).json({ message: 'Usuário criado com sucesso!', usuario: result.rows[0] });
+        res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
     } catch (error) {
-        if (error.code === '23505') { // Código de erro do PostgreSQL para valores duplicados (UNIQUE)
-            res.status(400).json({ error: 'Este login já está em uso.' });
-        } else {
-            console.error('Erro ao criar usuário:', error);
-            res.status(500).json({ error: 'Erro ao salvar os dados no banco' });
-        }
+        console.error('Erro ao cadastrar usuário:', error);
+        res.status(500).json({ error: 'Erro interno ao cadastrar usuário' });
     }
 };
 
-// Atualiza um usuário existente
+// 3. ATUALIZAR: Edita um usuário existente
 exports.updateUsuario = async (req, res) => {
     try {
         const { id } = req.params;
@@ -54,7 +51,7 @@ exports.updateUsuario = async (req, res) => {
     }
 };
 
-// Exclui um usuário
+// 4. EXCLUIR: Apaga um usuário
 exports.deleteUsuario = async (req, res) => {
     try {
         const { id } = req.params;
@@ -65,5 +62,3 @@ exports.deleteUsuario = async (req, res) => {
         res.status(500).json({ error: 'Erro interno ao excluir usuário' });
     }
 };
-
-// Forçando atualização no Render
