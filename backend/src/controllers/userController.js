@@ -65,3 +65,5 @@ exports.deleteUsuario = async (req, res) => {
         res.status(500).json({ error: 'Erro interno ao excluir usuário' });
     }
 };
+
+// Forçando atualização no Render
