@@ -28,3 +28,40 @@ exports.criarUsuario = async (req, res) => {
         }
     }
 };
+
+// Atualiza um usuário existente
+exports.updateUsuario = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nome, login, senha, perfil } = req.body;
+        
+        // Se a senha foi preenchida, atualiza tudo. Se não, atualiza sem alterar a senha.
+        if (senha) {
+            await db.query(
+                'UPDATE usuarios SET nome = $1, login = $2, senha = $3, perfil = $4 WHERE id = $5', 
+                [nome, login, senha, perfil, id]
+            );
+        } else {
+            await db.query(
+                'UPDATE usuarios SET nome = $1, login = $2, perfil = $3 WHERE id = $4', 
+                [nome, login, perfil, id]
+            );
+        }
+        res.json({ message: 'Usuário atualizado com sucesso' });
+    } catch (error) {
+        console.error('Erro ao atualizar usuário:', error);
+        res.status(500).json({ error: 'Erro interno ao atualizar usuário' });
+    }
+};
+
+// Exclui um usuário
+exports.deleteUsuario = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await db.query('DELETE FROM usuarios WHERE id = $1', [id]);
+        res.json({ message: 'Usuário excluído com sucesso' });
+    } catch (error) {
+        console.error('Erro ao excluir usuário:', error);
+        res.status(500).json({ error: 'Erro interno ao excluir usuário' });
+    }
+};
