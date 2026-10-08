@@ -7,7 +7,7 @@ export default function Exportacao() {
   const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
-    fetch('import.meta.env.VITE_API_URL/api/formularios')
+    fetch(`${import.meta.env.VITE_API_URL}/api/formularios`)
       .then(res => res.json())
       .then(data => {
         const dadosFormatados = data.map(item => {
