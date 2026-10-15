@@ -10,7 +10,8 @@ export default function GuiaInicial() {
           <BookOpen size={36} className="shrink-0" />
           Guia de Preenchimento do Diagnóstico dos Acervos e Dados de Pesquisa dos Núcleos da FCJA
         </h1>
-        <div className="text-blue-100 text-lg space-y-4 mt-6">
+        {/* text-justify */}
+        <div className="text-blue-100 text-lg space-y-4 mt-6 text-justify">
           <p>
             Este formulário tem como objetivo identificar e caracterizar os documentos e dados consultados, reunidos, digitalizados ou produzidos pelos núcleos do Projeto Preservação da Memória e Difusão Educativa, Cultural e Científica do Acervo da Fundação Casa de José Américo.
           </p>
@@ -23,7 +24,8 @@ export default function GuiaInicial() {
         </div>
       </div>
 
-      <div className="space-y-6 text-gray-800">
+      {/* text-justify para listas e textos das seções */}
+      <div className="space-y-6 text-gray-800 text-justify">
         
         {/* Seção 1 */}
         <section className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
