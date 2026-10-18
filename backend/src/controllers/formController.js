@@ -20,7 +20,7 @@ exports.submitForm = async (req, res) => {
             INSERT INTO formularios (
                 nucleo_id, coordenador_selecionado, situacao, vigencia_inicio, vigencia_fim,
                 escopo, atividades, procedencia, detalhe_procedencia, originais, especifique_originais,
-                genero, outro_genero, outros_dados, detalhe_outros_dados, dados_produzidos, formatos_digitais,
+                genero, outro_genero, outros_dados, detalhe_outros_dados, dados_produzidos, outro_dado_produzido, formatos_digitais,
                 dados_pessoais, dados_sensiveis, medidas_eticas, detalhe_outra_medida, titularidade, detalhe_titularidade,
                 local_armazenamento, outro_local_armazenamento, responsavel_armazenamento, outro_responsavel_armazenamento,
                 condicao_acesso, controle_acesso, outra_medida_seguranca, realiza_backup, periodicidade_backup,
@@ -30,11 +30,10 @@ exports.submitForm = async (req, res) => {
                 $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
                 $11, $12, $13, $14, $15, $16, $17, $18, $19, $20,
                 $21, $22, $23, $24, $25, $26, $27, $28, $29, $30,
-                $31, $32, $33, $34, $35, $36, $37, $38
+                $31, $32, $33, $34, $35, $36, $37, $38, $39
             ) RETURNING id;
         `;
 
-        // Transforma os arrays que vêm dos checkboxes em strings JSON antes de salvar no banco
         const values = [
             data.nucleoId || null,
             data.coordenadorSelecionado,
@@ -52,6 +51,7 @@ exports.submitForm = async (req, res) => {
             JSON.stringify(data.outrosDados || []),
             data.detalheOutrosDados,
             JSON.stringify(data.dadosProduzidos || []),
+            data.outroDadoProduzido, // <-- A nova variável inserida aqui
             data.formatosDigitais,
             data.dadosPessoais,
             data.dadosSensiveis,

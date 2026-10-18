@@ -14,8 +14,8 @@ export default function FormularioPesquisa() {
     genero: [], outroGenero: '', 
     outrosDados: [], detalheOutrosDados: '', 
     
-    dadosProduzidos: [], formatosDigitais: '', 
-    dadosPessoais: '', dadosSensiveis: '', 
+    dadosProduzidos: [], outroDadoProduzido: '', formatosDigitais: '', 
+    dadosPessoais: '', dadosSensiveis: '',
     medidasEticas: [], detalheOutraMedida: '', 
     titularidade: [], detalheTitularidade: '',
     
@@ -198,11 +198,14 @@ export default function FormularioPesquisa() {
         <h2 className="text-xl font-bold mb-4 text-blue-800">4. Dados Produzidos pelo Núcleo de Pesquisa</h2>
 
         <label className="block font-semibold mb-2">Documentos/dados produzidos pelo núcleo:</label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-2">
           {['Relatórios técnicos', 'Fotografias', 'Vídeos', 'Bases de dados', 'Modelos tridimensionais', 'Transcrições', 'Áudios', 'Planilhas', 'Mapas', 'Códigos', 'Catálogos', 'Outro', 'Não foram produzidos'].map(opt => (
             <label key={opt} className="text-sm"><input type="checkbox" name="dadosProduzidos" value={opt} onChange={handleChange} className="mr-2"/>{opt}</label>
           ))}
         </div>
+        {formData.dadosProduzidos.includes('Outro') && (
+          <input type="text" name="outroDadoProduzido" placeholder="Especifique o outro documento ou dado produzido..." onChange={handleChange} className="w-full border p-2 rounded mb-6 mt-2" required />
+        )}
 
         <label className="block font-semibold mb-2">Quais os formatos dos objetos digitais? (Ex: pdf, docx, wav, JPEG)</label>
         <input type="text" name="formatosDigitais" onChange={handleChange} className="w-full border p-2 rounded mb-6" />
