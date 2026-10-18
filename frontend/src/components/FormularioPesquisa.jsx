@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Componente reutilizável para o ícone de interrogação com o texto flutuante (Tooltip)
 const TooltipInfo = ({ texto }) => (
@@ -115,9 +116,22 @@ export default function FormularioPesquisa() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg text-gray-800">
-      <h1 className="text-3xl font-bold mb-8 text-center text-blue-900 border-b pb-4">
+      <h1 className="text-3xl font-bold mb-3 text-center text-blue-900">
         Diagnóstico da documentação e dos dados de pesquisa da FCJA
       </h1>
+      
+      <div className="flex justify-center mb-8 border-b pb-6">
+        <Link 
+          to=".." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="flex items-center gap-2 text-sm font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 px-5 py-2 rounded-full transition-colors border border-blue-200 shadow-sm"
+          title="Abre o guia num novo separador para não perder os dados já preenchidos"
+        >
+          <ExternalLink size={18} />
+          Abrir Guia de Preenchimento numa nova guia
+        </Link>
+      </div>
 
       {/* 1. Dados básicos */}
       <section className="mb-10 p-6 bg-gray-50 rounded border">
