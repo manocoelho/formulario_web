@@ -57,7 +57,12 @@ export default function FormularioPesquisa() {
   };
 
   // Extrai uma lista única de coordenadores a partir dos núcleos baixados
-  const coordenadoresUnicos = [...new Set(nucleos.map((n) => n.coordenador).filter(Boolean))];
+  const coordenadoresUnicos = [...new Set(
+    nucleos
+      .map((n) => n.coordenador)
+      .filter(Boolean)
+      .flatMap((coord) => coord.split(' e ').map((nome) => nome.trim()))
+  )].sort();
 
   // Atualiza o núcleo e preenche o coordenador automaticamente
   const handleNucleoChange = (e) => {
