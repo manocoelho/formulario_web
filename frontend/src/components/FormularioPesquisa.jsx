@@ -39,7 +39,7 @@ export default function FormularioPesquisa() {
     realizaBackup: '', periodicidadeBackup: '', 
     localBackup: [], detalheLocalBackup: '',
     espacoArmazenamentoValor: '', espacoArmazenamentoUnidade: 'GB',
-    prioridadePreservacao: '', necessidadeAmpliacao: ''
+    necessidadeAmpliacao: ''
   });
 
   useEffect(() => {
@@ -415,8 +415,8 @@ export default function FormularioPesquisa() {
           <textarea name="detalheLocalBackup" placeholder="Detalhamento da localização e gestão institucional das cópias de backup..." onChange={handleChange} className="w-full border p-2 rounded mb-6 mt-2 outline-none focus:border-blue-500" rows="2" required></textarea>
         )}
 
-        {/* Espaço, Prioridade e Ampliação */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        {/* Espaço e Ampliação */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
           <div>
             <div className="flex items-center mb-2">
               <label className="block font-semibold">Espaço utilizado</label>
@@ -430,16 +430,6 @@ export default function FormularioPesquisa() {
                 <option value="TB">TB</option>
               </select>
             </div>
-          </div>
-          <div>
-            <div className="flex items-center mb-2">
-              <label className="block font-semibold">Prioridade de preservação*</label>
-              <TooltipInfo texto="Avalie a urgência de tratamento e preservação definitiva para o acervo em questão." />
-            </div>
-            <select name="prioridadePreservacao" onChange={handleChange} className="w-full border p-2 rounded outline-none focus:border-blue-500" required>
-              <option value="">Selecione</option>
-              {['Muito Alta', 'Alta', 'Média', 'Baixa', 'Sem prioridade definida', 'Ainda não avaliada'].map(opt => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
           </div>
           <div>
             <div className="flex items-center mb-2">
