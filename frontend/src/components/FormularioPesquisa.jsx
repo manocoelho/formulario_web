@@ -438,7 +438,7 @@ export default function FormularioPesquisa() {
             </div>
             <select name="necessidadeAmpliacao" onChange={handleChange} className="w-full border p-2 rounded outline-none focus:border-blue-500" required>
               <option value="">Selecione</option>
-              {['Sim', 'Não', 'Em análise', 'Não informado', 'Não se aplica'].map(opt => <option key={opt} value={opt}>{opt}</option>)}
+              {['Sim', 'Não'].map(opt => <option key={opt} value={opt}>{opt}</option>)}
             </select>
           </div>
         </div>
