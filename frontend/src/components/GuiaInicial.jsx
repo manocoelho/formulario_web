@@ -1,5 +1,6 @@
 import React from 'react';
-import { BookOpen, Info, ShieldCheck, Database, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { BookOpen, Info, ShieldCheck, Database, FileText, ArrowRight } from 'lucide-react';
 
 export default function GuiaInicial() {
   return (
@@ -107,9 +108,19 @@ export default function GuiaInicial() {
 
         {/* Rodapé / Conclusão do Guia */}
         <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg text-blue-900">
-          <p className="font-medium text-center">
+          <p className="font-medium text-justify">
             Antes de concluir, confira se as respostas permitem identificar a origem dos documentos, os responsáveis, os formatos, a localização dos arquivos, as condições de acesso e as necessidades de organização e preservação. Essas informações orientarão o trabalho conjunto dos núcleos com a equipe do RDC-Arq, especialmente na definição de metadados e na preparação dos objetos digitais para preservação e acesso.
           </p>
+        </div>
+
+        {/* Botão de Navegação para o Formulário */}
+        <div className="pt-4 pb-8 flex justify-center">
+          <Link 
+            to="formulario" 
+            className="flex items-center gap-3 bg-blue-700 text-white text-lg px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition-colors shadow-md"
+          >
+            Seguir para o formulário <ArrowRight size={24} />
+          </Link>
         </div>
 
       </div>
