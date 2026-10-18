@@ -10,9 +10,19 @@ import Exportacao from './components/Exportacao';
 import GuiaInicial from './components/GuiaInicial';
 
 export default function App() {
-  const [usuario, setUsuario] = useState(null);
+  const [usuario, setUsuario] = useState(() => {
+    const usuarioSalvo = localStorage.getItem('fcja_usuario');
+    return usuarioSalvo ? JSON.parse(usuarioSalvo) : null;
+  });
 
-  // Proteção de rotas simples
+  React.useEffect(() => {
+    if (usuario) {
+      localStorage.setItem('fcja_usuario', JSON.stringify(usuario));
+    } else {
+      localStorage.removeItem('fcja_usuario');
+    }
+  }, [usuario]);
+
   const RequerAutenticacao = ({ children, perfilPermitido }) => {
     if (!usuario) return <Navigate to="/" />;
     if (perfilPermitido && usuario.perfil !== perfilPermitido) return <Navigate to="/" />;
@@ -22,9 +32,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rota Pública (Login) */}
         {/* Rota Pública (Login Real) */}
         <Route path="/" element={!usuario ? <Login setUsuario={setUsuario} /> : <Navigate to={usuario.perfil === 'admin' ? '/admin' : '/pesquisador'} />} />
+
+        {/* Rota exclusiva para abrir apenas a tela limpa do Guia em nova aba */}
+        <Route path="/guia" element={
+          <div className="min-h-screen bg-gray-50 p-8">
+            <GuiaInicial somenteLeitura={true} />
+          </div>
+        } />
 
         {/* Rotas do Pesquisador (Barra Superior) */}
         <Route path="/pesquisador" element={

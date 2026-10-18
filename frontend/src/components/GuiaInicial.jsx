@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Info, ShieldCheck, Database, FileText, ArrowRight } from 'lucide-react';
 
-export default function GuiaInicial() {
+export default function GuiaInicial({ somenteLeitura = false }) {
   return (
     <div className="max-w-4xl mx-auto pb-12">
       {/* Cabeçalho do Guia */}
@@ -112,15 +112,17 @@ export default function GuiaInicial() {
           </p>
         </div>
 
-        {/* Botão de Navegação para o Formulário */}
-        <div className="pt-4 pb-8 flex justify-center">
-          <Link 
-            to="formulario" 
-            className="flex items-center gap-3 bg-blue-700 text-white text-lg px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition-colors shadow-md"
-          >
-            Seguir para o formulário <ArrowRight size={24} />
-          </Link>
-        </div>
+        {/* Botão de Navegação para o Formulário (aparece apenas na tela inicial padrão) */}
+        {!somenteLeitura && (
+          <div className="pt-4 pb-8 flex justify-center">
+            <Link 
+              to="formulario" 
+              className="flex items-center gap-3 bg-blue-700 text-white text-lg px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition-colors shadow-md"
+            >
+              Seguir para formulário <ArrowRight size={24} />
+            </Link>
+          </div>
+        )}
 
       </div>
     </div>

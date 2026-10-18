@@ -121,13 +121,8 @@ export default function FormularioPesquisa() {
       </h1>
       
       <div className="flex justify-center mb-8 border-b pb-6">
-        {/* Alterado de <Link> para um <button> que usa window.open para abrir o separador corretamente com as rotas do React */}
         <button 
-          onClick={() => {
-            // Verifica o perfil pelo caminho atual (se contém 'admin' vai para /admin, senão vai para /pesquisador)
-            const caminhoGuia = window.location.pathname.includes('/admin') ? '/admin' : '/pesquisador';
-            window.open(caminhoGuia, '_blank');
-          }}
+          onClick={() => window.open('/guia', '_blank')}
           type="button"
           className="flex items-center gap-2 text-sm font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 px-5 py-2 rounded-full transition-colors border border-blue-200 shadow-sm"
           title="Abre o guia num novo separador para não perder os dados já preenchidos"
