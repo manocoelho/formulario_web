@@ -394,7 +394,7 @@ export default function FormularioPesquisa() {
             </div>
             <select name="periodicidadeBackup" onChange={handleChange} className="w-full border p-2 rounded outline-none focus:border-blue-500" required>
               <option value="">Selecione a periodicidade</option>
-              {['Automático e contínuo', 'Diário', 'Semanal', 'Quinzenal', 'Mensal', 'Trimestral', 'Semestral', 'Anual', 'Eventual', 'Sem periodicidade definida'].map(opt => (
+              {['Diário', 'Semanal', 'Quinzenal', 'Mensal', 'Trimestral', 'Semestral', 'Anual', 'Eventual'].map(opt => (
                 <option key={opt} value={opt}>{opt}</option>
               ))}
             </select>
