@@ -244,7 +244,7 @@ export default function FormularioPesquisa() {
             <label key={opt} className="text-sm"><input type="checkbox" name="outrosDados" value={opt} onChange={handleChange} className="mr-2"/>{opt}</label>
           ))}
         </div>
-        <textarea name="detalheOutrosDados" placeholder="Detalhe a utilização desses dados e como são organizados..." onChange={handleChange} className="w-full border p-2 rounded mt-2 outline-none focus:border-blue-500" rows="2"></textarea>
+        <textarea name="detalheOutrosDados" placeholder="Detalhe o tipo desses dados..." onChange={handleChange} className="w-full border p-2 rounded mt-2 outline-none focus:border-blue-500" rows="2"></textarea>
       </section>
 
       {/* 4. Produção, Formatos e Ética */}
@@ -354,7 +354,7 @@ export default function FormularioPesquisa() {
         </div>
         <select name="condicaoAcesso" onChange={handleChange} className="w-full border p-2 rounded mb-6 outline-none focus:border-blue-500">
           <option value="">Selecione a condição</option>
-          {['Acesso Aberto', 'Acesso parcialmente aberto', 'Acesso restrito', 'Acesso mediante autorização', 'Acesso somente à equipe do núcleo', 'Acesso somente à FCJA', 'Acesso sob embargo temporário', 'Acesso condicionado aos direitos autorais', 'Acesso condicionado à proteção de dados pessoais', 'Situação em análise'].map(opt => (
+          {['Acesso Aberto', 'Acesso parcialmente aberto', 'Acesso restrito', 'Acesso mediante autorização', 'Acesso somente à equipe do núcleo', 'Acesso somente à FCJA', 'Acesso sob embargo temporário', 'Acesso condicionado aos direitos autorais', 'Acesso condicionado à proteção de dados pessoais'].map(opt => (
              <option key={opt} value={opt}>{opt}</option>
           ))}
         </select>
